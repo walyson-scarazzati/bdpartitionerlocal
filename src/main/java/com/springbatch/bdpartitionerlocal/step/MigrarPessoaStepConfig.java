@@ -23,7 +23,8 @@ public class MigrarPessoaStepConfig {
   @Autowired
   @Qualifier("transactionManagerApp")
   private PlatformTransactionManager transactionManagerApp;
-    @Bean
+
+  @Bean
   public Step migrarPessoaManager(
             ItemReader<Pessoa> pessoaReader,
             ItemWriter<Pessoa> pessoaWriter,

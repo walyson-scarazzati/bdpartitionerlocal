@@ -17,12 +17,12 @@ public class BdPartitionerLocalJobConfig {
   private JobBuilderFactory jobBuilderFactory;
 
   @Bean
-  public Job bdPartitionerLocalJob(@Qualifier("migrarPessoaStep") Step migrarPessoaStep,
-      @Qualifier("migrarDadosBancariosStep") Step migrarDadosBancariosStep) {
+  public Job bdPartitionerLocalJob(@Qualifier("migrarPessoaManager") Step migrarPessoaManager,
+      @Qualifier("migrarDadosBancariosManager") Step migrarDadosBancariosManager) {
     return jobBuilderFactory
         .get("simplePartitionerJob")
-        .start(migrarPessoaStep)
-        .next(migrarDadosBancariosStep)
+        .start(migrarPessoaManager)
+        .next(migrarDadosBancariosManager)
         .incrementer(new RunIdIncrementer()).build();
   }
 }
